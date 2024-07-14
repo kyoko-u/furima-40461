@@ -9,8 +9,8 @@
 | encrypted_password | string  | null: false |
 | last_name          | string  | null: false |
 | first_name         | string  | null: false |
-| last_name _kana    | string  | null: false |
-| first_name _kana   | string  | null: false |
+| last_name_kana     | string  | null: false |
+| first_name_kana    | string  | null: false |
 | birthday           | date    | null: false |
 
 
@@ -49,7 +49,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_addresses
+- has_one :shipping_address
 
 
 ## shipping_addresses テーブル
