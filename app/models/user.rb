@@ -11,4 +11,14 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :birthday, presence: true
 
+  validate :password_complexity
+
+  private
+
+  def password_complexity
+    return if password.blank? || password.match(/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i)
+
+    errors.add :password, 'は半角英数字混合で入力してください'
+  end
+
 end
