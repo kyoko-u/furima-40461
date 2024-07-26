@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validates :first_name
   end
 
-  with_options presence: true, format: { with: /\A[ァ-ヶ]+\z/, message: 'カタカナを使用してください' } do
+  with_options presence: true, format: { with: /\A[ァ-ヶー]+\z/, message: 'カタカナを使用してください' } do
     validates :last_name_kana
     validates :first_name_kana
   end
@@ -19,5 +19,5 @@ class User < ApplicationRecord
   validates :birthday, presence: true
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含め半角で設定してください'
 end
