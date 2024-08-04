@@ -18,12 +18,12 @@ RSpec.describe Item, type: :model do
         @item.price = 300
         expect(@item).to be_valid
 
-        @item.price = 9999999
+        @item.price = 9_999_999
         expect(@item).to be_valid
 
         @item.price = 5000
         expect(@item).to be_valid
-      end      
+      end
     end
 
     context '新規登録できないとき' do
@@ -36,7 +36,7 @@ RSpec.describe Item, type: :model do
         @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
-      end      
+      end
       it 'infoが空では登録できない' do
         @item.info = ''
         @item.valid?
@@ -78,7 +78,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price 300~9999999の半角数字を使用してください')
       end
       it 'priceが¥9,999,999を超えると登録できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price 300~9999999の半角数字を使用してください')
       end
@@ -94,4 +94,4 @@ RSpec.describe Item, type: :model do
       end
     end
   end
-end  
+end
