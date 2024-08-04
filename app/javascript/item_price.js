@@ -10,8 +10,8 @@ const price = () => {
         const tax = Math.floor(price * 0.1);
         const profit = price - tax;
 
-        taxDisplay.innerHTML = `${tax.toLocaleString()}円`;
-        profitDisplay.innerHTML = `${profit.toLocaleString()}円`;
+        taxDisplay.innerHTML = `${tax.toLocaleString()}`;
+        profitDisplay.innerHTML = `${profit.toLocaleString()}`;
       } else {
         taxDisplay.innerHTML = '';
         profitDisplay.innerHTML = '';
