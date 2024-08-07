@@ -16,7 +16,8 @@ class Item < ApplicationRecord
   validates :shipping_free_status_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :prefecture_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :schedule_delivery_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: '300~9999999の半角数字を使用してください' }
+  validates :price, presence: true,
+                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: '300~9999999の半角数字を使用してください' }
   # validates :user, presence: true
   validates :image, presence: true
 end
