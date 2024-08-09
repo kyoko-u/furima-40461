@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
-  belongs_to :Prefecture
+  belongs_to :prefecture
   belongs_to :schedule_delivery
   belongs_to :shipping_free_status
 
