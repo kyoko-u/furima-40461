@@ -4,7 +4,7 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= "商品名" %>
+      <%= @item.name %>
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" if @item.image.attached? %>
@@ -23,7 +23,7 @@
       </span>
     </div>
 
-    <% if user_signed_in? && @item.present? %>
+    <% if user_signed_in?%>
       <% if @item.user_id == current_user.id %>  
         <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
@@ -102,9 +102,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
   <a href="#" class="another-item"><%=@item.category.name %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
 <%= render "shared/footer" %>
