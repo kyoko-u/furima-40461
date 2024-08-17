@@ -1,11 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
-  before_action :redirect_if_sold_out_or_owner, only: [:index, :create]
+  before_action :redirect_if_invalid_access, only: [:index, :create]
 
   def index
     @order_shipping_address = OrderShippingAddress.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -16,7 +15,6 @@ class OrdersController < ApplicationController
       @order_shipping_address.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id]) 
       render :index, status: :unprocessable_entity
     end
   end
@@ -31,8 +29,10 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def redirect_if_sold_out_or_owner
-    if @item.order.present? || @item.user_id == current_user.id
+  def redirect_if_invalid_access
+    if @item.order.present? 
+      redirect_to root_path
+    elsif @item.user_id == current_user.id
       redirect_to root_path
     end
   end
