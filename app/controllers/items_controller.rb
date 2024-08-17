@@ -47,9 +47,9 @@ class ItemsController < ApplicationController
   end
 
   def correct_user
-    return if current_user.id == @item.user_id
-
+    if current_user.id != @item.user_id || @item.order.present?
     redirect_to root_path
+    end
   end
 
   def set_item
