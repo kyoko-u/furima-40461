@@ -16,7 +16,7 @@ RSpec.describe OrderShippingAddress, type: :model do
       it 'buildingは空でも保存できること' do
         @order_shipping_address.building = ''
         expect(@order_shipping_address).to be_valid
-      end
+      end      
     end
 
     context '内容に問題がある場合' do
@@ -75,6 +75,11 @@ RSpec.describe OrderShippingAddress, type: :model do
         @order_shipping_address.item_id = nil
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'tokenが空だと保存できないこと' do
+        @order_shipping_address.token = nil
+        @order_shipping_address.valid?
+        expect(@order_shipping_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end

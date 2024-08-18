@@ -1,6 +1,6 @@
 class OrderShippingAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :token
 
   with_options presence: true do
     validates :user_id
@@ -9,6 +9,7 @@ class OrderShippingAddress
     validates :city
     validates :addresses
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "is invalid. Enter it as 09012345678" }
+    validates :token
   end
   validates :prefecture_id, numericality: { other_than: 1, message: "Select Prefecture" }
 
